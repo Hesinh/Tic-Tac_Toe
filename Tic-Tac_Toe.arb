@@ -51,7 +51,7 @@ class Grid
     num1 = gets
     puts "put a number for the second"
     num2 = gets
-    @@grid[num1.to_i][num2.to_i]= "X"
+    @@grid[num1.to_i][num2.to_i]= @form
     printer
     @@turn +=1
     puts "Your move this turn is above and the cpu move is below TURN:#{@@turn}"
@@ -59,13 +59,19 @@ class Grid
   
   private
   def computer
+    @form2
+    if @form == "X"
+      @form2 = "O"
+    elsif @form == "O"
+      @form2 = "X"
+    end
     number = 0
     while number < 1
       num1 = rand(3)
       num2 = rand(3)
-      if @@grid[num1][num2] != "X"
-        if @@grid[num1][num2] != "O"
-          @@grid[num1][num2]="O"
+      if @@grid[num1][num2] != @form
+        if @@grid[num1][num2] != @form2
+          @@grid[num1][num2]=@form2
           puts "CPU IS MOVING AT #{num1} AND #{num2}"
           number += 1
           @@turn +=1
