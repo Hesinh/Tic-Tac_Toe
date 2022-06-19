@@ -2,6 +2,8 @@ class Grid
   @@grid_container = [[".", ".", "."],[".", ".", "."],[".", ".", "."]]
   @@counter = 0
   @@turn = 0
+
+  private
   def printer
     @@grid_container.each_with_index do |row, i|
       print "\t"
@@ -10,6 +12,7 @@ class Grid
     end
   end
 
+  private
   def check_condition
     #This is to kept the vertical lines
     if @@grid_container[0] == ["X", "X", "X"] || @@grid_container[0] == ["O", "O", "O"] ||
@@ -38,6 +41,7 @@ class Grid
     end
   end
   
+  private
   def modifier
     puts "put a number for the first"
     num1 = gets
@@ -49,6 +53,7 @@ class Grid
     puts "Your move this turn is above and the cpu move is below TURN:#{@@turn}"
   end
   
+  private
   def computer
     number = 0
     while number < 1
@@ -66,6 +71,7 @@ class Grid
     printer
   end
 
+  public
   def game
     while @@counter < 1
       modifier
