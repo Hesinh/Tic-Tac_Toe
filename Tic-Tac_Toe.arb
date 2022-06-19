@@ -30,6 +30,15 @@ class Grid
 
       puts "you re winner trophy.jpg"
       @@counter += 1
+    elsif @@grid[0] == [@form2, @form2, @form2] || @@grid[1] == [@form2, @form2, @form2] || @@grid[2] == [@form2, @form2, @form2] || 
+      #This is to kept the vertical lines
+      @@grid[0][0] == @form2 && @@grid[1][0] == @form2 && @@grid[2][0] == @form2 ||
+      @@grid[0][1] == @form2 && @@grid[1][1] == @form2 && @@grid[2][1] == @form2 ||
+      @@grid[0][2] == @form2 && @@grid[1][2] == @form2 && @@grid[2][2] == @form2 ||
+      #This is for diagonal codes
+      @@grid[0][0] == @form2 && @@grid[1][1] == @form2 && @@grid[2][2] == @form2 ||
+      @@grid[0][2] == @form2 && @@grid[1][1] == @form2 && @@grid[2][0] == @form2
+      puts "You lose"
     elsif @@turn == 9
       puts "DRAW , nobody wins"
       @@counter += 1
