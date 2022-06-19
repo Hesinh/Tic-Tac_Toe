@@ -3,6 +3,11 @@ class Grid
   @@counter = 0
   @@turn = 0
 
+  def initialize(name, form)
+    @name = name
+    @form = form.to_upcase
+  end
+
   private
   def printer
     @@grid_container.each_with_index do |row, i|
@@ -81,5 +86,5 @@ class Grid
     end
   end
 end
-holder = Grid.new
+holder = Grid.new("Agus", "x")
 holder.game
