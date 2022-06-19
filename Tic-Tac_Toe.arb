@@ -1,16 +1,15 @@
 class Grid
-  @@grid_container = [[".", ".", "."],[".", ".", "."],[".", ".", "."]]
+  @@grid = [[".", ".", "."],[".", ".", "."],[".", ".", "."]]
   @@counter = 0
   @@turn = 0
 
-  def initialize(name, form)
-    @name = name
-    @form = form.to_upcase
+  def initialize(form)
+    @form = form.upcase
   end
 
   private
   def printer
-    @@grid_container.each_with_index do |row, i|
+    @@grid.each_with_index do |row, i|
       print "\t"
     print row.join("\t")
     puts
@@ -20,24 +19,15 @@ class Grid
   private
   def check_condition
     #This is to kept the vertical lines
-    if @@grid_container[0] == ["X", "X", "X"] || @@grid_container[0] == ["O", "O", "O"] ||
-      @@grid_container[1] == ["X", "X", "X"] || @@grid_container[1] == ["O", "O", "O"] ||
-      @@grid_container[2] == ["X", "X", "X"] || @@grid_container[2] == ["O", "O", "O"] ||
+    if @@grid[0] == ["X", "X", "X"] || @@grid[1] == ["X", "X", "X"] || @@grid[2] == ["X", "X", "X"] || 
       #This is to kept the vertical lines
-      @@grid_container[0][0] == "X" && @@grid_container[1][0] == "X" && @@grid_container[2][0] == "X" ||
-      @@grid_container[0][0] == "O" && @@grid_container[1][0] == "O" && @@grid_container[2][0] == "O" ||
-
-      @@grid_container[0][1] == "X" && @@grid_container[1][1] == "X" && @@grid_container[2][1] == "X" ||
-      @@grid_container[0][1] == "O" && @@grid_container[1][1] == "O" && @@grid_container[2][1] == "O" ||
-
-      @@grid_container[0][2] == "X" && @@grid_container[1][2] == "X" && @@grid_container[2][2] == "X" ||
-      @@grid_container[0][2] == "O" && @@grid_container[1][2] == "O" && @@grid_container[2][2] == "O" ||
+      @@grid[0][0] == "X" && @@grid[1][0] == "X" && @@grid[2][0] == "X" ||
+      @@grid[0][1] == "X" && @@grid[1][1] == "X" && @@grid[2][1] == "X" ||
+      @@grid[0][2] == "X" && @@grid[1][2] == "X" && @@grid[2][2] == "X" ||
       #This is for diagonal codes
-      @@grid_container[0][0] == "X" && @@grid_container[1][1] == "X" && @@grid_container[2][2] == "X" ||
-      @@grid_container[0][0] == "O" && @@grid_container[1][1] == "O" && @@grid_container[2][2] == "O" ||
+      @@grid[0][0] == "X" && @@grid[1][1] == "X" && @@grid[2][2] == "X" ||
+      @@grid[0][2] == "X" && @@grid[1][1] == "X" && @@grid[2][0] == "X" 
 
-      @@grid_container[0][2] == "X" && @@grid_container[1][1] == "X" && @@grid_container[2][0] == "X" ||
-      @@grid_container[0][2] == "O" && @@grid_container[1][1] == "O" && @@grid_container[2][0] == "O" 
       puts "you re winner trophy.jpg"
       @@counter += 1
     elsif @@turn == 9
@@ -52,7 +42,7 @@ class Grid
     num1 = gets
     puts "put a number for the second"
     num2 = gets
-    @@grid_container[num1.to_i][num2.to_i]= "X"
+    @@grid[num1.to_i][num2.to_i]= "X"
     printer
     @@turn +=1
     puts "Your move this turn is above and the cpu move is below TURN:#{@@turn}"
@@ -64,9 +54,9 @@ class Grid
     while number < 1
       num1 = rand(3)
       num2 = rand(3)
-      if @@grid_container[num1][num2] != "X"
-        if @@grid_container[num1][num2] != "O"
-          @@grid_container[num1][num2]="O"
+      if @@grid[num1][num2] != "X"
+        if @@grid[num1][num2] != "O"
+          @@grid[num1][num2]="O"
           puts "CPU IS MOVING AT #{num1} AND #{num2}"
           number += 1
           @@turn +=1
@@ -86,5 +76,5 @@ class Grid
     end
   end
 end
-holder = Grid.new("Agus", "x")
+holder = Grid.new("x")
 holder.game
