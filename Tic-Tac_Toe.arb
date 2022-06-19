@@ -19,14 +19,14 @@ class Grid
   private
   def check_condition
     #This is to kept the vertical lines
-    if @@grid[0] == ["X", "X", "X"] || @@grid[1] == ["X", "X", "X"] || @@grid[2] == ["X", "X", "X"] || 
+    if @@grid[0] == [@form, @form, @form] || @@grid[1] == [@form, @form, @form] || @@grid[2] == [@form, @form, @form] || 
       #This is to kept the vertical lines
-      @@grid[0][0] == "X" && @@grid[1][0] == "X" && @@grid[2][0] == "X" ||
-      @@grid[0][1] == "X" && @@grid[1][1] == "X" && @@grid[2][1] == "X" ||
-      @@grid[0][2] == "X" && @@grid[1][2] == "X" && @@grid[2][2] == "X" ||
+      @@grid[0][0] == @form && @@grid[1][0] == @form && @@grid[2][0] == @form ||
+      @@grid[0][1] == @form && @@grid[1][1] == @form && @@grid[2][1] == @form ||
+      @@grid[0][2] == @form && @@grid[1][2] == @form && @@grid[2][2] == @form ||
       #This is for diagonal codes
-      @@grid[0][0] == "X" && @@grid[1][1] == "X" && @@grid[2][2] == "X" ||
-      @@grid[0][2] == "X" && @@grid[1][1] == "X" && @@grid[2][0] == "X" 
+      @@grid[0][0] == @form && @@grid[1][1] == @form && @@grid[2][2] == @form ||
+      @@grid[0][2] == @form && @@grid[1][1] == @form && @@grid[2][0] == @form
 
       puts "you re winner trophy.jpg"
       @@counter += 1
