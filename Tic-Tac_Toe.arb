@@ -1,0 +1,79 @@
+class Grid
+  @@grid_container = [[".", ".", "."],[".", ".", "."],[".", ".", "."]]
+  @@counter = 0
+  @@turn = 0
+  def printer
+    @@grid_container.each_with_index do |row, i|
+      print "\t"
+    print row.join("\t")
+    puts
+    end
+  end
+
+  def check_condition
+    #This is to kept the vertical lines
+    if @@grid_container[0] == ["X", "X", "X"] || @@grid_container[0] == ["O", "O", "O"] ||
+      @@grid_container[1] == ["X", "X", "X"] || @@grid_container[1] == ["O", "O", "O"] ||
+      @@grid_container[2] == ["X", "X", "X"] || @@grid_container[2] == ["O", "O", "O"] ||
+      #This is to kept the vertical lines
+      @@grid_container[0][0] == "X" && @@grid_container[1][0] == "X" && @@grid_container[2][0] == "X" ||
+      @@grid_container[0][0] == "O" && @@grid_container[1][0] == "O" && @@grid_container[2][0] == "O" ||
+
+      @@grid_container[0][1] == "X" && @@grid_container[1][1] == "X" && @@grid_container[2][1] == "X" ||
+      @@grid_container[0][1] == "O" && @@grid_container[1][1] == "O" && @@grid_container[2][1] == "O" ||
+
+      @@grid_container[0][2] == "X" && @@grid_container[1][2] == "X" && @@grid_container[2][2] == "X" ||
+      @@grid_container[0][2] == "O" && @@grid_container[1][2] == "O" && @@grid_container[2][2] == "O" ||
+      #This is for diagonal codes
+      @@grid_container[0][0] == "X" && @@grid_container[1][1] == "X" && @@grid_container[2][2] == "X" ||
+      @@grid_container[0][0] == "O" && @@grid_container[1][1] == "O" && @@grid_container[2][2] == "O" ||
+
+      @@grid_container[0][2] == "X" && @@grid_container[1][1] == "X" && @@grid_container[2][0] == "X" ||
+      @@grid_container[0][2] == "O" && @@grid_container[1][1] == "O" && @@grid_container[2][0] == "O" 
+      puts "you re winner trophy.jpg"
+      @@counter += 1
+    elsif @@turn == 9
+      puts "DRAW , nobody wins"
+      @@counter += 1
+    end
+  end
+  
+  def modifier
+    puts "put a number for the first"
+    num1 = gets
+    puts "put a number for the second"
+    num2 = gets
+    @@grid_container[num1.to_i][num2.to_i]= "X"
+    printer
+    @@turn +=1
+    puts "Your move this turn is above and the cpu move is below TURN:#{@@turn}"
+  end
+  
+  def computer
+    number = 0
+    while number < 1
+      num1 = rand(3)
+      num2 = rand(3)
+      if @@grid_container[num1][num2] != "X"
+        if @@grid_container[num1][num2] != "O"
+          @@grid_container[num1][num2]="O"
+          puts "CPU IS MOVING AT #{num1} AND #{num2}"
+          number += 1
+          @@turn +=1
+        end
+      end
+    end
+    printer
+  end
+
+  def game
+    while @@counter < 1
+      modifier
+      check_condition
+      computer
+      check_condition
+    end
+  end
+end
+holder = Grid.new
+holder.game
