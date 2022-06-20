@@ -1,4 +1,4 @@
-class Grid
+class Game
   @@grid = [[".", ".", "."],[".", ".", "."],[".", ".", "."]]
   @@counter = 0
   @@turn = 0
@@ -48,10 +48,18 @@ class Grid
   
   private
   def modifier
-    puts "put a number for the first"
+    puts "put a number for the column index"
     num1 = gets
-    puts "put a number for the second"
+    while num1.to_i >= 3
+      puts "please, select a number , but nothing greater than 2"
+      num1 = gets
+    end
+    puts "put a number for the row index"
     num2 = gets
+    while num2.to_i >= 3
+      puts "please, select a number , but nothing greater than 2"
+      num2 = gets
+    end
     @@grid[num1.to_i][num2.to_i]= @form
     printer
     @@turn +=1
@@ -83,6 +91,7 @@ class Grid
 
   public
   def game
+    puts "your form is #{@form}"
     while @@counter < 1
       puts "TURN:#{@@turn}"
       modifier
@@ -96,5 +105,5 @@ class Grid
     end
   end
 end
-holder = Grid.new("x")
+holder = Game.new("x")
 holder.game
