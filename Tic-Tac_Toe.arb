@@ -24,7 +24,7 @@ class Grid
       @@grid[0][0] == @form && @@grid[1][0] == @form && @@grid[2][0] == @form ||
       @@grid[0][1] == @form && @@grid[1][1] == @form && @@grid[2][1] == @form ||
       @@grid[0][2] == @form && @@grid[1][2] == @form && @@grid[2][2] == @form ||
-      #This is for diagonal codes
+      #This is for diagonal lines
       @@grid[0][0] == @form && @@grid[1][1] == @form && @@grid[2][2] == @form ||
       @@grid[0][2] == @form && @@grid[1][1] == @form && @@grid[2][0] == @form
 
@@ -35,10 +35,11 @@ class Grid
       @@grid[0][0] == @form2 && @@grid[1][0] == @form2 && @@grid[2][0] == @form2 ||
       @@grid[0][1] == @form2 && @@grid[1][1] == @form2 && @@grid[2][1] == @form2 ||
       @@grid[0][2] == @form2 && @@grid[1][2] == @form2 && @@grid[2][2] == @form2 ||
-      #This is for diagonal codes
+      #This is for diagonal lines
       @@grid[0][0] == @form2 && @@grid[1][1] == @form2 && @@grid[2][2] == @form2 ||
       @@grid[0][2] == @form2 && @@grid[1][1] == @form2 && @@grid[2][0] == @form2
       puts "You lose"
+      @@counter += 1
     elsif @@turn == 9
       puts "DRAW , nobody wins"
       @@counter += 1
