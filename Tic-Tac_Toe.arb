@@ -55,7 +55,6 @@ class Grid
     @@grid[num1.to_i][num2.to_i]= @form
     printer
     @@turn +=1
-    puts "Your move this turn is above and the cpu move is below TURN:#{@@turn}"
   end
   
   private
@@ -85,9 +84,12 @@ class Grid
   public
   def game
     while @@counter < 1
+      puts "TURN:#{@@turn}"
       modifier
       check_condition
+      
       if @@counter < 1
+        puts "TURN:#{@@turn}"
         computer
         check_condition
       end
