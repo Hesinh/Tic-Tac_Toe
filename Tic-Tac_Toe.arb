@@ -27,7 +27,7 @@ class Grid
       #This is for diagonal lines
       @@grid[0][0] == @form && @@grid[1][1] == @form && @@grid[2][2] == @form ||
       @@grid[0][2] == @form && @@grid[1][1] == @form && @@grid[2][0] == @form
-
+      
       puts "you re winner trophy.jpg"
       @@counter += 1
     elsif @@grid[0] == [@form2, @form2, @form2] || @@grid[1] == [@form2, @form2, @form2] || @@grid[2] == [@form2, @form2, @form2] || 
@@ -87,8 +87,10 @@ class Grid
     while @@counter < 1
       modifier
       check_condition
-      computer
-      check_condition
+      if @@counter < 1
+        computer
+        check_condition
+      end
     end
   end
 end
